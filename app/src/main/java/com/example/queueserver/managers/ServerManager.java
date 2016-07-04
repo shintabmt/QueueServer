@@ -1,6 +1,5 @@
 package com.example.queueserver.managers;
 
-import com.example.queueserver.managers.thread.HttpResponseThread;
 import com.example.queueserver.managers.thread.HttpServerThread;
 
 /**
