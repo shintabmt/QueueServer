@@ -52,7 +52,7 @@ public class QueueAdapter extends RecyclerView.Adapter<QueueAdapter.ViewHolder> 
         QueueInfo item = queueInfoList.get(position);
         Customer customer = item.getCustomer();
         holder.name.setText(customer.getName());
-        holder.ip.setText(item.getQueuePosition());
+        holder.ip.setText(item.getQueuePosition() + "");
         holder.type.setText(customer.getQueueType() + "");
     }
 

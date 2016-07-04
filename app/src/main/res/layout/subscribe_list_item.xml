@@ -19,16 +19,16 @@
         android:id="@+id/clientIp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/serverName"
+        android:layout_below="@+id/clientName"
         android:layout_centerVertical="true"
         android:singleLine="true"/>
 
     <TextView
         android:id="@+id/queueType"
-        android:layout_width="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignRight="@+id/serverIp"
+        android:layout_alignRight="@+id/clientIp"
         android:layout_centerVertical="true"
         android:layout_marginRight="30dp"/>
 

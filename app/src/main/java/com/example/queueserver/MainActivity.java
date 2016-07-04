@@ -7,18 +7,21 @@ import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.queueserver.managers.thread.HttpResponseThread;
 import com.example.queueserver.models.Customer;
+import com.example.queueserver.models.QueueInfo;
 import com.example.queueserver.views.adapters.QueueAdapter;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mAdapter = new QueueAdapter();
         mAdapter.setItems(QueueApplication.getInstance().getQueueInfo());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -63,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
     }
 
-    private void handleQueue(Customer customer){
-        QueueApplication.getInstance().getSubscribeList().add(customer);
+    private void handleQueue(Customer customer) {
         mAdapter.setItems(QueueApplication.getInstance().getQueueInfo());
     }
 
@@ -86,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     InetAddress inetAddress = enumInetAddress.nextElement();
 
                     if (inetAddress.isSiteLocalAddress()) {
-                        ip += "SiteLocalAddress: "
+                        ip += "Server Ip Address: "
                                 + inetAddress.getHostAddress() + "\n";
                     }
 
